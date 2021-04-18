@@ -1,5 +1,15 @@
 @font-face {
     font-family: Montserrat;
+    src: url(font/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url(font/Montserrat-Medium.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-SemiBold;
     src: url(font/Montserrat-SemiBold.ttf);
 }
 
@@ -26,7 +36,7 @@ h2 {
 }
 
 .col-lg-3 label {
-    font-family: Montserrat;
+    font-family: Montserrat-Medium;
     font-size: 13px;
     font-style: normal;
     font-weight: 600;
@@ -36,10 +46,8 @@ h2 {
     float: left;
     margin-left: 15px;
     padding-top: 12px;
+    color: #1F2125;
 }
-
-
-/* STRUCTURE */
 
 label.error {
     display: inline-block;
@@ -60,12 +68,13 @@ label.error {
 }
 
 #formContent {
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
     background: #FAFAFA;
     padding: 30px;
-    width: 90%;
+    width: 100%;
     max-width: 554px;
+    max-height: 694px;
     position: relative;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
@@ -73,7 +82,23 @@ label.error {
     text-align: center;
 }
 
+.fadeIn img {
+    width: 323px;
+    height: 84px;
+    margin-top: 23px;
+}
+
+.exit .fa-times {
+    color: black;
+}
+
+.exit {
+    float: right;
+    margin: 5px 10px 0px 0px;
+}
+
 textarea {
+    padding: 6px 52px 6px 10px;
     font-family: Montserrat;
     font-size: 13px;
     font-style: normal;
@@ -82,18 +107,22 @@ textarea {
     letter-spacing: 0em;
     text-align: left;
     border: 1px solid #D1D7E0;
-    width: 326px;
+    float: left;
+    width: 96%;
     height: 148px;
+    color: rgba(31, 33, 37, 1);
 }
 
 .title h5 {
-    font-family: Montserrat;
+    font-family: Montserrat-SemiBold;
     font-size: 21px;
     font-style: normal;
     font-weight: 600;
     line-height: 27px;
     letter-spacing: 0em;
     text-align: center;
+    padding: 15px 25px;
+    color: rgba(0, 0, 0, 1);
 }
 
 .bottom-title {
@@ -121,14 +150,22 @@ h2.active {
     line-height: 14px;
     letter-spacing: 0em;
     text-align: left;
-    margin-left: 168px;
+    margin-left: 134px;
+    padding: 5px;
 }
 
+.image {
+    cursor: pointer;
+}
 
-/* FORM TYPOGRAPHY*/
+#img {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
 
 input[type=submit] {
-    font-family: Montserrat;
+    font-family: Montserrat-SemiBold;
     font-size: 13px;
     font-style: normal;
     font-weight: 600;
@@ -142,12 +179,11 @@ input[type=submit] {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    text-transform: uppercase;
     -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
     box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
     -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-    margin: 25px 20px 40px 20px;
+    border-radius: 3px;
+    margin: 10px 20px 40px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -176,8 +212,11 @@ input[type=submit]:active {
     letter-spacing: 0em;
     text-align: left;
     padding-top: 5px;
-    color: #82868E;
-    margin-left: 0px;
+    color: rgba(130, 134, 142, 1);
+}
+
+input[type=email]::placeholder {
+    color: rgba(31, 33, 37, 1);
 }
 
 input[type=text],
@@ -187,12 +226,13 @@ select {
     background-color: #ffff;
     border: none;
     color: #0d0d0d;
-    padding: 5px 10px;
+    padding: 5px 5px 10px 10px;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 5px;
-    width: 85%;
+    margin-bottom: 10px;
+    float: left;
+    width: 96%;
     border: 2px solid #f6f6f6;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -200,7 +240,7 @@ select {
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 0px;
 }
 
 select {
@@ -212,6 +252,7 @@ select {
     letter-spacing: 0em;
     text-align: left;
     color: #82868E;
+    padding-left: 5px;
 }
 
 input[type=text]:focus {
@@ -225,16 +266,6 @@ input[type=email]:hover,
 select:hover {
     border: 2px solid #5fbae9;
 }
-
-input[type=text]:placeholder {
-    color: #cccccc;
-}
-
-
-/* ANIMATIONS */
-
-
-/* Simple CSS3 Fade-in-down Animation */
 
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
@@ -338,9 +369,6 @@ input[type=text]:placeholder {
     animation-delay: 1s;
 }
 
-
-/* Simple CSS3 Fade-in Animation */
-
 .underlineHover:after {
     display: block;
     left: 0;
@@ -365,8 +393,4 @@ input[type=text]:placeholder {
 
 *:focus {
     outline: none;
-}
-
-#icon {
-    width: 60%;
 }

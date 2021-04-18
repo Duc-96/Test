@@ -8,12 +8,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="wrapper fadeInDown">
         <div id="formContent">
+            <div class="exit">
+                <a href="#"><i class="fas fa-times"></i></a>
+            </div>
             <div class="fadeIn first">
                 <img src="logo/logo.png" id="icon" alt="User Icon" />
             </div>
@@ -25,50 +29,51 @@
             <form method="POST" id="registration">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
                             <label for="">Tên của bạn</label>
                         </div>
-                        <div class="col-lg-9">
+                        <div class="col-lg-9 col-md-9 col-sm-9">
                             <input type="text" class="fadeIn second" name="name" placeholder="Ví dụ: Nguyễn Văn A">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
                             <label for="">Số điện thoại</label>
                         </div>
-                        <div class="col-lg-9">
+                        <div class="col-lg-9 col-md-9 col-sm-9">
                             <input type="text" class="fadeIn third" name="phone" placeholder="số điện thoại liên lạc">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
                             <label for="">Vị trí</label>
                         </div>
-                        <div class="col-lg-9">
+                        <div class="col-lg-9 col-md-9 col-sm-9">
                             <select id="position">
-                                <option value="Junior Ecommerce Web Developer">Junior Ecommerce Web Developer</option>
+                                <option value="Junior">Junior Ecommerce Web Developer</option>
                                 <option value="Design">Design</option>
                                 <option value="Fresher PHP">Fresher PHP</option>
                             </select>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
                             <label for="">Kinh nghiệm làm việc</label>
                         </div>
-                        <div class="col-lg-9">
+                        <div class="col-lg-9 col-md-9 col-sm-9">
                             <textarea name="exp" id="exp" cols="30" rows="10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard d scrambled it to make a type specimen book.</textarea>
                         </div>
                     </div>
                     <div class="file">
+                        <label for="img" class="image"><i class="fas fa-paperclip fa-2x"></i> Đính kèm hình ảnh</label>
                         <input type="file" id="img" name="img">
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
                             <label for="">Email</label>
                         </div>
-                        <div class="col-lg-9">
-                            <input type="email" id="email" class="fadeIn third" name="email" placeholder="Ex: contact@freemind.vn">
+                        <div class="col-lg-9 col-md-9 col-sm-9">
+                            <input type="email" id="email" class="fadeIn second" name="email" placeholder="Ex: contact@freemind.vn">
                         </div>
                     </div>
                     <input type="submit" id="submit" class="fadeIn fourth" value="GỬI CV cho Freemind">
@@ -77,73 +82,11 @@
         </div>
     </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            $("#submit").click(function() {
-                var form_data = {
-                    "name": $("#registration :text[name='name']").val(),
-                    "phone": $("#registration :text[name='phone']").val(),
-                    "position": $("#position").val(),
-                    "exp": $("#exp").val(),
-                    "picture": $("#registration :file[name='img']").val(),
-                    "email": $("#email").val(),
-                };
-                $("#registration").validate({
-                    rules: {
-                        name: "required",
-                        phone: {
-                            required: true,
-                            minlength: 10,
-                            maxlength: 12
-                        },
-                        email: {
-                            required: true,
-                            email: true
-                        },
-                        exp: "required",
-                        img: "required",
-                    },
 
-                    messages: {
-                        name: "Vui lòng nhập họ tên",
-                        phone: {
-                            required: "Vui lòng nhập số điện thoại",
-                            minlength: "Số điện thoại tối thiểu là 10 số",
-                            maxlength: "Số điện thoại tối đa là 12 số",
-                        },
-                        email: {
-                            required: "Vui lòng nhập email",
-                            email: "Email chưa đúng cú pháp"
-                        },
-                        exp: "Vui lòng điền kinh nghiệm làm việc",
-                        img: "Hình ảnh không được trống"
-                    },
-                    submitHandler: function(form) {
-                        form.submit();
-                    }
-                });
-
-                if ($('#registration').valid()) {
-                    // var url = 'https://freemind-test.netlify.app/.netlify/functions/test';
-                    var url = "alo.php";
-                    jQuery.ajax({
-                        url: url,
-                        type: "POST",
-                        data: form_data,
-                        dataType: "json",
-                        success: function(respon, status, jqXHR) {
-                            console.log(respon);
-                        }
-                    });
-                }
-                return false;
-            });
-        });
-    </script>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<!-- <script src="js/scrip.js"></script> -->
+<script src="js/scrip.js"></script>
 
 </html>
